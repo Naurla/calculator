@@ -6,66 +6,69 @@
   <title>Calculator</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
 </head>
-<body class="bg-secondary d-flex align-items-center justify-content-center" style="min-height: 100vh;">
-  <div class="bg-light p-5 shadow-lg rounded w-100" style="max-width: 400px;">
-    <h2 class="text-center mb-4">Simple Calculator</h2>
-
-    <div class="mb-3">
-      <label for="num1" class="form-label">First Number</label>
-      <input type="number" class="form-control" id="num1" placeholder="Enter first number" aria-label="First number">
-    </div>
-
-    <div class="mb-3">
-      <label for="num2" class="form-label">Second Number</label>
-      <input type="number" class="form-control" id="num2" placeholder="Enter second number" aria-label="Second number">
-    </div>
-
-    <div class="mb-3">
-      <label for="operation" class="form-label">Operation</label>
-      <select class="form-select" id="operation" aria-label="Select operation">
-        <option value="add">Addition</option>
-        <option value="subtract">Subtraction</option>
-        <option value="multiply">Multiplication</option>
-        <option value="divide">Division</option>
-      </select>
-    </div>
-
-    <div class="mb-3">
-      <label for="result" class="form-label">Result</label>
-      <input type="text" class="form-control" id="result" readonly aria-label="Calculation result">
-    </div>
-
-    <button id="compute" class="btn btn-primary w-100">Calculate</button>
-  </div>
-
-  <script>
-    document.getElementById('compute').addEventListener('click', () => {
-      const num1 = parseFloat(document.getElementById('num1').value);
-      const num2 = parseFloat(document.getElementById('num2').value);
-      const operation = document.getElementById('operation').value;
-      let result = '';
-
-      if (isNaN(num1) || isNaN(num2)) {
-        result = "Please enter valid numbers";
-      } else {
-        switch (operation) {
-          case 'add':
-            result = num1 + num2;
-            break;
-          case 'subtract':
-            result = num1 - num2;
-            break;
-          case 'multiply':
-            result = num1 * num2;
-            break;
-          case 'divide':
-            result = num2 !== 0 ? (num1 / num2): 'Cannot divide by 0';
-            break;
-        }
+<body class ="bg-secondary">
+    <body class ="bg-secondary">
+        <div class="container d-flex justify-content-center mt-5">
+            <div class="bg-light p-5 shadow-lg rounded">
+              <h2 class="text-center">CALCULATOR</h2>
+              
+              <div class="mb-3">
+                <label for="firstNumber" class="form-label">First Number</label>
+                <input type="number" class="form-control" id="num1">
+              </div>
+          
+              <div class="mb-3">
+                <label for="secondNumber" class="form-label">Second Number</label>
+                <input type="number" class="form-control" id="num2">
+              </div>
+          
+              <div class="mb-3">
+                <label for="operation" class="form-label">Operation</label>
+                <select class="form-select" id="operation">
+                  <option value="add">Addition</option>
+                  <option value="subtract">Subtraction</option>
+                  <option value="multiply">Multiplication</option>
+                  <option value="divide">Division</option>
+                </select>
+              </div>
+          
+              <div class="mb-3">
+                <label for="result" class="form-label">Result</label>
+                <input type="text" class="form-control" id="result" readonly>
+              </div>
+          
+              <button id ="compute"class="btn btn-primary w-100">Calculate</button>
+            </div>
+          </div>
+<script>
+   document.getElementById('compute').addEventListener('click', function() {
+    const num1 = parseFloat(document.getElementById('num1').value);
+    const num2 = parseFloat(document.getElementById('num2').value);
+    const operation = document.getElementById('operation').value;
+    let result = '';
+  
+    if (isNaN(num1) || isNaN(num2)) {
+      result = "Please enter valid numbers";
+    } else {
+      switch(operation) {
+        case 'add':
+          result = num1 + num2;
+          break;
+        case 'subtract':
+          result = num1 - num2;
+          break;
+        case 'multiply':
+          result = num1 * num2;
+          break;
+        case 'divide':
+          result = num2 !== 0 ? num1 / num2 : 'Error';
+          break;
       }
+    }
+  
+    document.getElementById('result').value = result;
+  });
+</script>
 
-      document.getElementById('result').value = result;
-    });
-  </script>
 </body>
 </html>
